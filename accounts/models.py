@@ -9,7 +9,7 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.pk} {self.name}'
 
 
 class Tag(models.Model):
@@ -40,7 +40,7 @@ class Order(models.Model):
     STATUS = (
         ('Pending', 'Pending'),
         ('Out for delivery', 'Out for delivery'),
-        ('Delivery', 'Delivered'),
+        ('Delivered', 'Delivered'),
     )
     customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
