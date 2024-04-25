@@ -20,6 +20,7 @@
 				<tr>
 				    <td>{{i.name}}</td>
 					<td>{{i.phone}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'customer' i.id %}" target="_blank">view</a></td>
 				</tr>
 				{% endfor%}
 
@@ -45,8 +46,8 @@
 				<td>{{i.product}}</td>
 				<td>{{i.date_created}}</td>
 				<td>{{i.status}}</td>
-				<td><a href="">update</a></td>
-				<td><a href="">remove</a></td>
+				<td><a class="btn btn-sm btn-info" href="">update</a></td>
+				<td><a class="btn btn-sm btn-danger" href="">remove</a></td>
 			</tr>
 			{% endfor %}
 			</table>
