@@ -9,14 +9,14 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.pk} {self.name}'
+        return f'{self.id} {self.name}'
 
 
 class Tag(models.Model):
     name = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.id} {self.name}'
 
 class Product(models.Model):
     Category = (
@@ -32,8 +32,7 @@ class Product(models.Model):
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
-        return f'{self.name}'
-
+        return f'{self.id} {self.name}'
 
 
 class Order(models.Model):
@@ -46,8 +45,13 @@ class Order(models.Model):
     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     date_created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    note = models.CharField(max_length=1000, null=True)
+    def __str__(self): 
+        return f'{self.customer.name} {self.product.name}'
 
-    def __str__(self):
-        return f'{self.customer} {self.product}'
+
+
+
+    
     
 
