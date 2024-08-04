@@ -35,8 +35,10 @@ def admin_only(views_func):
 
          if user_group == 'admin':
              return views_func(request, *args, **kwargs)
-         if user_group == 'customer':
+         elif user_group == 'customer':
              return redirect('user_page')
+         else:
+             return HttpResponse('Sorry! You are not allowed to see this page')
     return inner
              
 
